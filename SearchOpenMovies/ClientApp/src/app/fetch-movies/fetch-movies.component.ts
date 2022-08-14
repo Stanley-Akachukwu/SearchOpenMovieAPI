@@ -37,15 +37,21 @@ export class FetchMoviesComponent implements OnInit {
 
   
   onSubmit(): void {
+    if (this.movieRequest.searchOption === null || this.movieRequest.searchOption === 'undefined' || this.movieRequest.searchOption === '') {
+      alert("Please choose search option to proceed!")
+      return;
+    }
     if (this.movieRequest.searchOption == "Single") {
-      if (this.movieRequest.iMDbID === this.movieRequest.title === null || this.movieRequest.iMDbID === this.movieRequest.title === undefined) {
+      if (this.movieRequest.iMDbID === null || this.movieRequest.iMDbID === 'undefined' || this.movieRequest.iMDbID === '') {
         alert("Please enter IMBID or Title to proceed")
+        return;
       }
     }
 
     if (this.movieRequest.searchOption == "Multiple") {
-      if (this.movieRequest.title === null || this.movieRequest.title === undefined) {
+      if (this.movieRequest.title === null || this.movieRequest.title === 'undefined' || this.movieRequest.title === '') {
         alert("Please enter Title to proceed")
+        return;
       }
     }
     this.movieService.getMovies(this.movieRequest).subscribe(result => {
