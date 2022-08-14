@@ -1,0 +1,156 @@
+<!--{{movie | json}}-->
+
+<form (ngSubmit)="onSubmit()" *ngIf="hasMovies">
+  <div class="form-group">
+    <h3>Search Open Movies</h3>
+    <hr />
+  </div>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title"
+           [(ngModel)]="movie.title" name="title" disabled />
+  </div>
+  <div class="form-group">
+    <label for="year">Year</label>
+    <input type="text" class="form-control" id="title"
+           [(ngModel)]="movie.year" name="year" disabled />
+  </div>
+  <div class="form-group">
+    <label for="rated">Rated</label>
+    <input type="text" class="form-control" id="rated"
+           [(ngModel)]="movie.rated" name="rated" disabled />
+  </div>
+  <div class="form-group">
+    <label for="released">Released</label>
+    <input type="text" class="form-control" id="released"
+           [(ngModel)]="movie.released" name="released" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="runtime">Runtime</label>
+    <input type="text" class="form-control" id="runtime"
+           [(ngModel)]="movie.runtime" name="runtime" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="genre">Genre</label>
+    <input type="text" class="form-control" id="genre"
+           [(ngModel)]="movie.genre" name="genre" disabled />
+  </div>
+  <div class="form-group">
+    <label for="director">Director</label>
+    <input type="text" class="form-control" id="director"
+           [(ngModel)]="movie.director" name="director" disabled />
+  </div>
+  <div class="form-group">
+    <label for="writer">Writer</label>
+    <input type="text" class="form-control" id="writer"
+           [(ngModel)]="movie.writer" name="writer" disabled />
+  </div>
+  <div class="form-group">
+    <label for="actors">Actors</label>
+    <input type="text" class="form-control" id="actors"
+           [(ngModel)]="movie.actors" name="actors" disabled />
+  </div>
+  <div class="form-group form-check">
+    <label class="form-check-label" for="plot">Plot </label>
+    <input type="checkbox" class="form-check-input" id="plot" [(ngModel)]="movie.plot" name="plot">
+  </div>
+  <div class="form-group">
+    <label for="language">Language</label>
+    <input type="text" class="form-control" id="language"
+           [(ngModel)]="movie.language" name="language" disabled />
+  </div>
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input type="text" class="form-control" id="country"
+           [(ngModel)]="movie.country" name="country" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="awards">Awards</label>
+    <input type="text" class="form-control" id="awards"
+           [(ngModel)]="movie.awards" name="awards" disabled />
+  </div>
+  <div class="form-group">
+    <label for="poster">Poster</label>
+  
+    <img class="rounded-circle mt-5" [src]="movie.poster" style="width: 75px; height: 75px"/>
+
+  </div>
+  <div class="form-group">
+    <label for="ratings">Ratings</label>
+    <ul class="list-group-flush" *ngFor="let r of movie.ratings">
+      <li class="list-group-item"  >{{r.source}}{{r.value}}</li>
+    </ul>
+  
+  </div>
+  <div class="form-group">
+    <label for="metascore">Metascore</label>
+    <input type="text" class="form-control" id="metascore"
+           [(ngModel)]="movie.metascore" name="metascore" disabled />
+  </div>
+  <div class="form-group">
+    <label for="imdbRating">ImdbRating</label>
+    <input type="text" class="form-control" id="imdbRating"
+           [(ngModel)]="movie.imdbRating" name="imdbRating" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="imdbVotes">ImdbVotes</label>
+    <input type="text" class="form-control" id="imdbVotes"
+           [(ngModel)]="movie.imdbVotes" name="imdbVotes" disabled />
+  </div>
+  <div class="form-group">
+    <label for="imdbID"> ID</label>
+    <input type="text" class="form-control" id="imdbID"
+           [(ngModel)]="movie.imdbID" name="imdbID" disabled />
+  </div>
+  <div class="form-group">
+    <label for="type"> Movie Type</label>
+    <input type="text" class="form-control" id="type"
+           [(ngModel)]="movie.type" name="type" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="type"> DVD</label>
+    <input type="text" class="form-control" id="dvd"
+           [(ngModel)]="movie.dvd" name="dvd" disabled />
+  </div>
+  <div class="form-group">
+    <label for="boxOffice"> BoxOffice</label>
+    <input type="text" class="form-control" id="boxOffice"
+           [(ngModel)]="movie.boxOffice" name="boxOffice" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="production"> Production</label>
+    <input type="text" class="form-control" id="production"
+           [(ngModel)]="movie.production" name="production" disabled />
+  </div>
+  <div class="form-group">
+    <label for="website"> Website</label>
+    <input type="text" class="form-control" id="website"
+           [(ngModel)]="movie.website" name="website" disabled />
+  </div>
+
+  <div class="form-group">
+    <label for="response"> Response</label>
+    <input type="text" class="form-control" id="response"
+           [(ngModel)]="movie.response" name="response" disabled />
+  </div>
+  <hr />
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+ 

@@ -1,0 +1,90 @@
+<!--{{movieRequest | json}}-->
+
+
+<form (ngSubmit)="onSubmit()" *ngIf="!hasMovies">
+  <div class="form-group">
+    <h4>Search Open Movies</h4>
+    <hr />
+  </div>
+
+  <div class="form-group">
+    <label for="searchOption">Search Option:</label>
+    <select class="form-control" [(ngModel)]="movieRequest.searchOption"
+            id="searchOption" (change)="onSearchOptionChange()" name="searchOption">
+      <option value="" selected>Select Search Options</option>
+      <option value="Single">Single Movie</option>
+      <option value="Multiple">Multiple Movies</option>
+    </select>
+  </div>
+  <div class="form-group" *ngIf="multipleSearchOption">
+    <label for="pageSize">Title:</label>
+    <input type="text" class="form-control" id="title" placeholder="Title" autocomplete="off"
+           [(ngModel)]="movieRequest.title" name="title" />
+  </div>
+  <div class="form-group" *ngIf="singleSearchOption">
+    <label for="iMDbID">IMDb ID:</label>
+    <input type="text" class="form-control" id="iMDbID" placeholder="IMDb ID"
+           [(ngModel)]="movieRequest.iMDbID" name="iMDbID" autocomplete="off"/>
+  </div>
+  <div class="form-group form-check" *ngIf="singleSearchOption">
+    <label class="form-check-label" for="fullPlot">Should return full plot? </label>
+    <input type="checkbox" class="form-check-input" id="fullPlot" [(ngModel)]="movieRequest.fullPlot" name="fullPlot">
+  </div>
+  <div class="form-group" *ngIf="multipleSearchOption">
+    <label for="pageSize">Page Size:</label>
+    <input type="text" class="form-control" id="pageSize" placeholder="Page Size"
+           [(ngModel)]="movieRequest.pageSize" name="pageSize" />
+  </div>
+
+  <div class="form-group">
+    <label for="movieType">Movie Type:</label>
+    <select class="form-control" [(ngModel)]="movieRequest.movieType" id="movieType" name="movieType">
+      <option value="" selected>Select movie type</option>
+      <option value="Movie">Movie</option>
+      <option value="Series">Series</option>
+      <option value="Episode">Episode</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="releaseYear">Release Year:</label>
+    <input type="date" class="form-control" id="releaseYear" placeholder="releaseYear"
+           [(ngModel)]="movieRequest.releaseYear" name="releaseYear" />
+  </div>
+  <hr />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div *ngIf="hasMovies">OMDb API Result</div>
+<hr  *ngIf="hasMovies" />
+<p *ngIf="!movies"><em>Loading...</em></p>
+
+<table class='table' aria-labelledby="tableLabel" *ngIf="hasMovies">
+  <thead class="thead-dark">
+    <tr>
+      <th>ImdbID</th>
+      <th>Title</th>
+      <th>Release Year</th>
+      <th>Genre</th>
+      <th>Imdb Rating</th>
+      <th>Writer</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+
+      <td>{{ movie.imdbID}}</td>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.released|date: 'longDate' }}</td>
+      <td>{{ movie.genre}}</td>
+      <td>{{ movie.imdbRating }}</td>
+      <td>{{ movie.writer }}</td>
+      <td>
+        <button type="button" class="btn btn-info btn-sm" (click)="onGetdetails(movie.imdbID)">View Details</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
